@@ -1,0 +1,142 @@
+.mainContainer {
+  
+  width: 800px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid;
+  
+}
+
+nav {
+  height: 10%;
+  width: 100%;
+  flex: 1 0 auto;
+  background-color: white;
+  display: flex;
+
+}
+
+.navBtnContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-items: end;
+}
+
+.navBtnContainer > * {
+  flex: 1 0 auto;
+}
+
+main {
+  
+  flex: 9 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color:cadetblue;
+  
+
+  
+}
+
+aside {
+  flex: 1 0 auto;
+}
+
+.questionContainer{
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  border: 1px solid;
+  justify-items: center;
+  background-color: aquamarine;
+
+  
+}
+
+.question {
+
+  font-size: larger;
+  flex: 1 0 auto;
+  text-align: center;
+
+}
+
+.answersContainer {
+
+  
+  margin: 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 8 0 auto;
+}
+
+.answersContainer > *{
+  
+  height: 100%;
+}
+
+
+.sidebar {
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+  background-color: lightblue;
+
+  flex: 0 auto;
+  
+}
+
+.sidebar > * {
+
+  background-color:#4CAF50;
+  height: 100%;
+
+}
+
+.adContainer {
+
+  height: 10%;
+  width: 100%;
+  flex: 1 0 auto;
+  background-color: violet;
+
+}
+
+footer {
+
+  height: 10%;
+  width: 100%;
+  flex: 1 0 auto;
+  background-color: mistyrose;
+}
+
+.container {
+
+  height: 70%;
+  width: 100%;
+  flex: 7 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+}
+
+
+
+.logo {
+  width:  50px;
+  height: 50px;
+
+}
+
+table, th, td{
+  border: 1px solid black;
+  background-color: white;
+}
