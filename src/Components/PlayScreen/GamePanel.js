@@ -1,4 +1,8 @@
+/** @jsx jsx */
+
 import React, {useEffect} from 'react';
+import { css, jsx } from "@emotion/core";
+import AnswerButton from '../Basic/AnswerButton';
 import { useSelector, useDispatch } from 'react-redux';
 import {loadQuestion, correctAnswer, wrongAnswer, setKeyboardEvents } from '../../redux/store';
 
@@ -49,21 +53,95 @@ export default function GamePanel(props) {
     
 
     if(props.questionGenerator.getQuestionsCount() === 0)
-        return (<h2>There are no questions loaded!</h2>);
+        return (<NoQuestionsMsg />);
     return (
-        <div  className="text-center mt-5 overflow-hidden">
-            <div className="questionContainer ">
-                <h2 className="question border rounded mt-1"
-                style={{backgroundColor:"#ffc107"}}>{question.question}</h2>
-            </div>
-            <div className="answersContainer btn-group-vertical col-8 mt-5">
-                
-                <button className="w-100 p-2" id="answerBtn1" onClick={(e) => checkAnswerTest(e.target)}>{question.answers[0]}</button>
-                <button className="w-100 p-2" id="answerBtn2" onClick={(e) => checkAnswerTest(e.target)}>{question.answers[1]}</button>
-                <button className="w-100 p-2" id="answerBtn3" onClick={(e) => checkAnswerTest(e.target)}>{question.answers[2]}</button>
-                <button className="w-100 p-2" id="answerBtn4" onClick={(e) => checkAnswerTest(e.target)}>{question.answers[3]}</button>
-            </div>
-        </div>
+        <QuestionsContainer>
+            <AnswerBox>{question.question}</AnswerBox>
+            <AnswersContainer>
+                <AnswerButton id="answerBtn1" onClick={(e) => checkAnswerTest(e.target)}>{question.answers[0]}</AnswerButton>
+                <AnswerButton id="answerBtn2" onClick={(e) => checkAnswerTest(e.target)}>{question.answers[1]}</AnswerButton>
+                <AnswerButton id="answerBtn3" onClick={(e) => checkAnswerTest(e.target)}>{question.answers[2]}</AnswerButton>
+                <AnswerButton id="answerBtn4" onClick={(e) => checkAnswerTest(e.target)}>{question.answers[3]}</AnswerButton>
+            </AnswersContainer>
+        </QuestionsContainer>
 
     );
 }   
+
+const NoQuestionsMsg = props => {
+
+    return (
+  
+      <div css={css`
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      `}><h2>There are no questions loaded!</h2>
+      </div>
+  
+    );
+  
+  }
+  
+const QuestionsContainer = props => {
+
+return (
+
+    <div css={css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 20px 0 0 0;
+
+        div {
+            margin: 20px;
+            text-align: center;
+            width: 100%
+        }
+
+        `}>
+            {props.children}
+        </div>
+
+);
+}
+
+const AnswersContainer = props => {
+
+return (
+
+    <div className="answersContainer" css={css`
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    button {
+        padding: 5px;
+        width: 50%
+        
+    }
+`}>
+    {props.children}
+</div>        
+
+);
+
+}
+
+const AnswerBox = props => {
+
+    return (
+
+        <div>
+            <h2 css={css`
+            font-family: "Georgia, serif"`}
+            >{props.children}</h2>
+        </div>
+
+    );
+
+}

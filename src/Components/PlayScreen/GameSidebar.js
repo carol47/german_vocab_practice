@@ -12,29 +12,33 @@ export default function GameSidebar() {
 
 
     return (
-        <div className="btn-group-vertical btn-group-toggle w-100 h-100" data-toggle="button">
-            <label className="btn btn-secondary align-middle">
+        <div data-toggle="button" style={{
+            display: "none",
+            flexDirection: "column"
+
+            }}>
+            <label>
                 <input type="radio" name="sidebar" id="training" autoComplete="off" 
                     onClick={() => dispatch(changeGameScreen("GamePanelScreen"))} />  
                 Training
             
             </label>
-            <label className="btn btn-secondary">
+            <label>
                 <input type="radio" name="sidebar" id="other" autoComplete="off" />
                 ???
             </label>
-            <label className="btn btn-secondary">
+            <label>
                 <input type="radio" name="sidebar" id="other2" autoComplete="off"/>
                 ???
             </label>
-            <label className="btn btn-secondary">
+            <label>
                 <input type="radio" name="sidebar" id="other3" autoComplete="off"
                     onClick={() => {
                     dispatch(changeGameScreen("StatisticsComponent"))
                 }} />
                 Statistics
             </label>
-            <label className="btn btn-secondary">
+            <label>
                 <input type="radio" name="sidebar" id="other4" autoComplete="off" 
                         onClick={(event) => {
                     dispatch(changeGameScreen("SettingsScreen"))

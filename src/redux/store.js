@@ -7,7 +7,6 @@ const initialState = {
         grammarClass:   [],
         subject: []
     },
-    currentScreen:  "SettingsScreen",
     currentQuestion : {
         "id":"1",
         "level":"A1",
