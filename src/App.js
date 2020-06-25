@@ -73,6 +73,8 @@ const NavBar = () => {
           padding: 5px;
           
           * {
+              font-size: 110%;
+              text-decoration: underline;
               color: black;
               padding: 5px;
               font-family: "Georgia, serif";

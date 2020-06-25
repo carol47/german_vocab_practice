@@ -59,6 +59,7 @@ const WordCountBar = props => {
         <div css={css`
             display:flex;
             width: auto;
+            min-width: 9em;
             height: 2em;
             flex-direction:row;
             justify-content: space-around;
@@ -82,6 +83,7 @@ const ScoreBar = props => {
     return (
         <div css={css`
         width: auto;
+        min-width: 9em;
         height: 2em;
         display:flex;
         flex-direction:row;
