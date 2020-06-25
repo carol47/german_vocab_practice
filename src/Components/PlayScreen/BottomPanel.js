@@ -17,14 +17,18 @@ export default function () {
 
     return(
         <div css={css`
-            width: 100%;
-            margin-top: 32px;
-            
+            width: 90vw;
+            height: 10vh;
+            flex-grow: 1;
             display: flex;
-            flex-direction: row;
+            flex-flow: row wrap;
             justify-content: space-around;
             * {
                 font-family: "Georgia, serif";
+            }
+
+            @media (max-width: 480px) {
+                height: 20%;
             }
         `}>
 
@@ -36,7 +40,7 @@ export default function () {
             <ScoreBar name="Score">
                 <span>
                     <div >
-                        <FontAwesomeIcon icon={faCheckCircle} css={css`color:green;`} />
+                        <FontAwesomeIcon icon={faCheckCircle} css={css`margin: 0;color:green;`} />
                         <span>{rightQCount}</span>
                         <FontAwesomeIcon icon={faTimesCircle} css={css`color:red;`} />
                         <span>{wrongQCount}</span>
@@ -54,12 +58,18 @@ const WordCountBar = props => {
     return (
         <div css={css`
             display:flex;
+            width: auto;
+            height: 2em;
             flex-direction:row;
             justify-content: space-around;
             align-items: center;
+            border: 1px solid black;
+            border-radius:10px;
+            padding: 1%;
+            margin: 1%;
 
             * {
-                margin-left: 5px;
+                margin-left: 1px;
             }
         `}>
             {props.children}
@@ -71,11 +81,17 @@ const ScoreBar = props => {
 
     return (
         <div css={css`
-        
+        width: auto;
+        height: 2em;
         display:flex;
         flex-direction:row;
         justify-content: space-around;
         align-items: center;
+        border: 1px solid black;
+        border-radius:10px;
+        margin: 1%;
+        padding: 1%;
+
         * {
             margin-left: 10px;
         }

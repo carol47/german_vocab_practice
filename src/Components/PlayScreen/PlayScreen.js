@@ -48,10 +48,16 @@ const MainContainer = props => {
 
     <div css={css`
       width: 80%;
-      
+      height: auto;
+      max-height: 90vh;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       align-items: center;
+
+      @media (max-width: 480px) {
+        
+      }
 
   `}>
     {props.children}

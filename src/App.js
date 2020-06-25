@@ -16,22 +16,19 @@ import StatisticsComponent from './Components/PlayScreen/StatisticsComponent';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-
 export default function App() {
-
 
   return (
     <Provider store={store}>
       <Router>
         <div css={css`
+
           width: 100vw;
           height: 100vh;
           display: flex;
           flex-direction: column;
           align-items: center;
           
-          
-
       `}>
 
           <NavBar />
@@ -63,6 +60,7 @@ const NavBar = () => {
       display: flex;
       flex-direction: row;
       justify-content: center;
+      max-height: 10vh;
       width: 100%;
     `}>
       <nav css={css`
@@ -71,7 +69,7 @@ const NavBar = () => {
           width: 80%;
           flex-direction: row;
           justify-content: space-between;
-          margin: 5px;
+          
           padding: 5px;
           
           * {

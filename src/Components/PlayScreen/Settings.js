@@ -13,11 +13,17 @@ export default function FilterComponent() {
 
     return (
         <div css={css`
+            
             display: flex;
-            height: fit-content;
+            width: 30em;
+            height: 2em;
             flex-direction: row;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
+            border: 1px solid black;
+            border-radius:10px;
+            margin: 1%;
+            padding: 1%;
         `}>
             <div>
                 <FontAwesomeIcon icon={faFilter} />
@@ -42,6 +48,7 @@ const FilterLevelButton = props => {
 
     return (
         <button {...props} css={css`
+            padding: 0px;
             background-color: white;
             border: none;
         `} onClick={(e) => {
@@ -63,6 +70,7 @@ const FilterGrammarButton = props => {
     const dispatch = useDispatch();
     return (
             <button {...props} css={css`
+                padding: 0px;
                 background-color: white;
                 border: none;
             `} onClick={() => dispatch(changeGrammarClass(props.value))}>

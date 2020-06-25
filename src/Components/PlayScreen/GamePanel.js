@@ -2,7 +2,6 @@
 
 import React, {useEffect} from 'react';
 import { css, jsx } from "@emotion/core";
-import AnswerButton from '../Basic/AnswerButton';
 import { useSelector, useDispatch } from 'react-redux';
 import {loadQuestion, correctAnswer, wrongAnswer, setKeyboardEvents } from '../../redux/store';
 
@@ -74,11 +73,16 @@ const NoQuestionsMsg = props => {
   
       <div css={css`
         width: 100%;
-        height: 100%;
+        height: 80vh;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        @media (max-width: 480px) {
+
+            height: 70vh;
+
+        }
       `}><h2>There are no questions loaded!</h2>
       </div>
   
@@ -92,14 +96,20 @@ return (
 
     <div css={css`
         display: flex;
+        height: 80vh;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
         width: 100%;
-        margin: 20px 0 0 0;
+        
+        @media (max-width: 480px) {
+
+            height: 70vh;
+
+        }
 
         div {
-            margin: 20px;
+            
             text-align: center;
             width: 100%
         }
@@ -119,10 +129,16 @@ return (
     display: flex;
     flex-direction: column;
     align-items: center; 
+
     button {
         padding: 5px;
         width: 50%
         
+    }
+    @media(max-width:720px) {
+        button {
+            width: 80%;
+        }
     }
 `}>
     {props.children}
@@ -144,4 +160,22 @@ const AnswerBox = props => {
 
     );
 
+}
+
+const AnswerButton = props => {
+
+    return (
+        <button {...props} css={css`
+            font-size: 120%;
+            height: 3.5em;
+            background-color: white;
+            border: solid 1px black;
+            border-radius: 5px;
+
+            @media(max-width: 720px) {
+                font-size: 100%;
+                height: 3em;
+            }
+        `} >{props.children}</button>
+    );
 }

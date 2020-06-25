@@ -4,7 +4,7 @@ export function generateTag(tagName){
 
     switch(tagName){
         case "A1":
-            return(<span style={{border: "1px solid black", borderRadius: "3px"}}>&nbsp;A1&nbsp;</span>);
+            return(<span style={{ width: "100%", border: "1px solid black", borderRadius: "3px"}}>&nbsp;A1&nbsp;</span>);
         case "A2":
             return(<span style={{border: "1px solid black", borderRadius: "3px"}}>&nbsp;A2&nbsp;</span>);
         case "B1":
