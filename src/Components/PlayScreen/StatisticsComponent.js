@@ -49,6 +49,7 @@ const StatisticsContainer = (props) => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 32px;
 
         @media (max-width: 720px) {
           font-size: 0.8rem;
@@ -67,8 +68,8 @@ const StatisticsTable = styled.div`
 
   row-gap: 1px;
   width: 40vw;
-  media(max-width: 720px) {
-    width: 95vw;
+  @media (max-width: 720px) {
+    width: 80vw;
   }
 `;
 
