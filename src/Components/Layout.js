@@ -11,6 +11,7 @@ const Layout = styled.div`
 a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 h1 h2 h3 h4 h5 {
