@@ -1,105 +1,128 @@
 /** @jsx jsx */
 
-import React from 'react';
+import React from "react";
 
-import Settings from './Settings';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faTimesCircle, faList } from '@fortawesome/free-solid-svg-icons';
+import Settings from "./Settings";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckCircle,
+  faTimesCircle,
+  faListOl,
+} from "@fortawesome/free-solid-svg-icons";
 import { css, jsx } from "@emotion/core";
-import { useSelector } from 'react-redux';
+import styled from "@emotion/styled";
+import { useSelector } from "react-redux";
 
 export default function () {
+  const rightQCount = useSelector((state) => state.rightQuestions);
+  const wrongQCount = useSelector((state) => state.wrongQuestions);
+  const questionCount = useSelector((state) => state.questionCount);
 
-    const rightQCount   = useSelector(state => state.rightQuestions);
-    const wrongQCount   = useSelector(state => state.wrongQuestions);
-    const questionCount = useSelector(state => state.questionCount)
+  return (
+    <BottomPanelContainer>
+      <WordCountBar questionCount={questionCount} />
 
+      <ScoreBar name="Score">
+        <CorrectItems rightQCount={rightQCount} />
+        <WrongItems wrongQCount={wrongQCount} />
+      </ScoreBar>
 
-    return(
-        <div css={css`
-            width: 90vw;
-            height: 10vh;
-            flex-grow: 1;
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: space-around;
-            * {
-                font-family: "Georgia, serif";
-            }
-
-            @media (max-width: 480px) {
-                height: 20%;
-            }
-        `}>
-
-            <WordCountBar>
-                <FontAwesomeIcon icon={faList} css={css`color:black;`} />
-                <span>Words: {questionCount}</span>
-            </WordCountBar>
-
-            <ScoreBar name="Score">
-                <span>
-                    <div >
-                        <FontAwesomeIcon icon={faCheckCircle} css={css`margin: 0;color:green;`} />
-                        <span>{rightQCount}</span>
-                        <FontAwesomeIcon icon={faTimesCircle} css={css`color:red;`} />
-                        <span>{wrongQCount}</span>
-                    </div>
-                </span>
-            </ScoreBar>
-            
-            <Settings />    
-        </div>
-    )
-
+      <Settings />
+    </BottomPanelContainer>
+  );
 }
 
-const WordCountBar = props => {
-    return (
-        <div css={css`
-            display:flex;
-            width: auto;
-            min-width: 9em;
-            height: 2em;
-            flex-direction:row;
-            justify-content: space-around;
-            align-items: center;
-            border: 1px solid black;
-            border-radius:10px;
-            padding: 1%;
-            margin: 1%;
+const BottomPanelContainer = styled.div`
+  display: flex;
+  width: 90vw;
+  height: auto;
+  flex-grow: 1;
+  flex-flow: row wrap;
 
-            * {
-                margin-left: 1px;
-            }
-        `}>
-            {props.children}
-        </div>
-    );
-}
+  justify-content: space-around;
+  align-items: center;
+  * {
+    font-family: "Georgia, serif";
+  }
 
-const ScoreBar = props => {
+  @media (max-width: 480px) {
+    height: 20%;
+  }
+`;
 
-    return (
-        <div css={css`
-        width: auto;
-        min-width: 9em;
-        height: 2em;
-        display:flex;
-        flex-direction:row;
-        justify-content: space-around;
-        align-items: center;
-        border: 1px solid black;
-        border-radius:10px;
-        margin: 1%;
-        padding: 1%;
+const WordCountBar = ({ questionCount }) => {
+  console.log("question count", questionCount);
+  const WCBarContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 120px;
+    height: 32px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-left: 6px;
+    & > span {
+      padding-left: 6px;
+    }
+  `;
 
-        * {
-            margin-left: 10px;
-        }
-    `}>
-        {props.children}
-        </div>
-    );
+  return (
+    <WCBarContainer>
+      <FontAwesomeIcon
+        icon={faListOl}
+        css={css`
+          font-size: 1rem;
+          color: black;
+        `}
+      />
+      <span>Words: {questionCount}</span>
+    </WCBarContainer>
+  );
+};
 
-}
+const ScoreBar = styled.div`
+  width: 150px;
+
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding-left: 12px;
+
+  * {
+    width: 60px;
+    margin-left: 6px;
+  }
+`;
+
+const CorrectItems = ({ rightQCount }) => {
+  return (
+    <div>
+      <FontAwesomeIcon
+        icon={faCheckCircle}
+        css={css`
+          margin: 0;
+          color: green;
+        `}
+      />
+      <span>{rightQCount}</span>
+    </div>
+  );
+};
+
+const WrongItems = ({ wrongQCount }) => {
+  return (
+    <div>
+      <FontAwesomeIcon
+        icon={faTimesCircle}
+        css={css`
+          color: red;
+        `}
+      />
+      <span>{wrongQCount}</span>
+    </div>
+  );
+};
