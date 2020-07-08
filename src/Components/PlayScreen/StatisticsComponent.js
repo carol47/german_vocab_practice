@@ -1,92 +1,89 @@
 /** @jsx jsx */
 
-import React from 'react';
+import React from "react";
 import { css, jsx } from "@emotion/core";
-import { useSelector } from 'react-redux';
-import { generateTag } from './Tags';
+import styled from "@emotion/styled";
+import { useSelector } from "react-redux";
+import { generateTag } from "./Tags";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckCircle,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function StatisticsComponent() {
+  console.log("Rendering Statistics Component");
+  let statistics = useSelector((store) => store.statistics);
 
-    console.log("Rendering Statistics Component");
-    let statistics = useSelector(store => store.statistics);
-
-
-    return (
-
-        <StatisticsContainer >
-            <StatisticsTable>
-                <tbody>
-                    {Object.keys(statistics).sort().map(id => 
-                    <TableRow key={id} >
-                        <td>{generateTag(statistics[id].level)}</td>
-                        <td>{id}</td>
-                        <td>{statistics[id].correctAnswers}</td>
-                        <td>{statistics[id].wrongAnswers}</td>
-                        <td>{(statistics[id].correctAnswers) /
-                        (statistics[id].correctAnswers + statistics[id].wrongAnswers)}</td>
-                    </TableRow>)} 
-                </tbody>
-                    
-            </StatisticsTable>
-        </StatisticsContainer>
-    );
+  return (
+    <StatisticsContainer>
+      <StatisticsTable>
+        <TableHeader />
+        {Object.keys(statistics)
+          .sort()
+          .map((id) => (
+            <React.Fragment>
+              <span>{generateTag(statistics[id].level)}</span>
+              <span>{id}</span>
+              <span>{statistics[id].correctAnswers}</span>
+              <span>{statistics[id].wrongAnswers}</span>
+              <span>
+                {(
+                  statistics[id].correctAnswers /
+                  (statistics[id].correctAnswers + statistics[id].wrongAnswers)
+                ).toFixed(1)}
+              </span>
+            </React.Fragment>
+          ))}
+      </StatisticsTable>
+    </StatisticsContainer>
+  );
 }
 
-const StatisticsContainer = props => {
+const StatisticsContainer = (props) => {
+  return (
+    <div
+      css={css`
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-    return (
-        <div css={css`
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
+        @media (max-width: 720px) {
+          font-size: 0.8rem;
+        }
+      `}
+    >
+      <h2>Statistics</h2>
+      {props.children}
+    </div>
+  );
+};
 
-            * {
-                margin: 16px 0px;
-            }
+const StatisticsTable = styled.div`
+  display: grid;
+  grid-template-columns: 48px auto 48px 48px 48px;
 
-            
-        `}>
-            <h2 css={css`font-family: "Georgia, serif";`}>Statistics</h2>
-            {props.children}
-        </div>
-    )
+  row-gap: 1px;
+  width: 40vw;
+  media(max-width: 720px) {
+    width: 95vw;
+  }
+`;
 
-}
-
-const StatisticsTable = props => {
-
-    return (
-        <table css={css`width: 80%;`}>
-            <thead css={css`border-bottom: 1px solid black;`}>
-                <tr>
-                    <th>Lvl</th>
-                    <th>Word</th>
-                    <th>Correct Guesses</th>
-                    <th>Wrong Guesses</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            {props.children}
-        </table>
-    );
-}
-
-const TableRow = props => {
-
-    return (
-
-        <tr css={css`
-            
-            border-bottom: 1px solid black;
-            margin: 10px;
-
-        `}>
-            {props.children}
-        </tr>
-
-    );
-
-}
+const TableHeader = () => {
+  return (
+    <React.Fragment>
+      <span>Lvl</span>
+      <span>Word</span>
+      <span>
+        <FontAwesomeIcon icon={faCheckCircle} />
+      </span>
+      <span>
+        <FontAwesomeIcon icon={faTimesCircle} />
+      </span>
+      <span>Score</span>
+    </React.Fragment>
+  );
+};

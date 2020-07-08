@@ -3,39 +3,70 @@ import React from "react";
 import { css, jsx } from "@emotion/core";
 import styled from "@emotion/styled";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faTable } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
   return (
     <NavBarContainer>
-      <Logo>
-        <Link to="/">Home</Link>
-      </Logo>
+      <HomeButton />
       <RightNavBar>
-        <Link to="/statistics">Statistics</Link>
+        <StatisticsButton />
       </RightNavBar>
     </NavBarContainer>
   );
 };
 
 const NavBarContainer = styled.nav`
+  background-color: #f5f5f5;
+  border-radius: 20px;
   align-self: center;
+  width: 80vw;
   display: flex;
-  width: 80%;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  margin: 10px;
+  padding: 0px 10px;
+  overflow: none;
+
   * {
     font-size: 110%;
-    text-decoration: underline;
+    text-decoration: none;
     color: black;
     padding: 5px;
-    font-family: "Georgia, serif";
+    font-family: "Roboto Slab", serif;
   }
-`;
 
-const Logo = (props) => {
-  return <div css>{props.children}</div>;
-};
+  * {
+    position: relative;
+    box-size- border-box;
+    font-family: 'Roboto', sans-serif;
+    
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+
+`;
 
 const RightNavBar = styled.div`
   * {
@@ -44,3 +75,57 @@ const RightNavBar = styled.div`
 `;
 
 export default NavBar;
+
+const NavBarItem = styled.div`
+  min-width: 100px;
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+  }
+`;
+
+const HomeButton = () => {
+  return (
+    <NavBarItem>
+      <Link to="/" css={css``}>
+        <FontAwesomeIcon
+          icon={faHome}
+          css={css`
+            font-size: 2rem;
+            color: black;
+          `}
+        />
+        Home
+      </Link>
+    </NavBarItem>
+  );
+};
+
+const StatisticsButton = () => {
+  return (
+    <div
+      css={css`
+        min-width: 100px;
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          text-decoration: none;
+        }
+      `}
+    >
+      <Link to="/statistics" css={css``}>
+        <FontAwesomeIcon
+          icon={faTable}
+          css={css`
+            font-size: 2.5rem;
+            color: black;
+          `}
+        />
+        Statistics
+      </Link>
+    </div>
+  );
+};

@@ -14,6 +14,7 @@ const BasicButton = styled.button`
 const PrimaryButton = styled(BasicButton)`
   background-color: black;
   color: white;
+  text-decoration: none;
 `;
 
-export { PrimaryButton };
+export { BasicButton, PrimaryButton };

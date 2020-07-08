@@ -93,7 +93,7 @@ const BodyContainer = styled.div`
 `;
 
 const PageTitle = styled.h1`
-  font-family: "Georgia, serif";
+  font-family: "Roboto Slab", serif;
   font-size: 250%;
   align-self: center;
 

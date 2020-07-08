@@ -84,9 +84,11 @@ export default function GamePanel(props) {
   );
 }
 
-const NoQuestionsMsg = styled.h2`
+const NoQuestionsMsg = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 70vh;
+  font-size: 2rem;
+  text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -95,7 +97,7 @@ const NoQuestionsMsg = styled.h2`
 
 const QuestionsContainer = styled.div`
   display: flex;
-  height: 80vh;
+  height: 60vh;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -128,7 +130,7 @@ const AnswersContainer = styled.div`
 `;
 
 const AnswerBox = styled.h2`
-  font-family: "Georgia, serif";
+  font-family: "Roboto Slab", serif;
 `;
 
 const AnswerButton = styled.button`
@@ -137,9 +139,13 @@ const AnswerButton = styled.button`
   background-color: white;
   border: solid 1px black;
   border-radius: 5px;
+  &:hover {
+    transition: background-color 0.2s ease;
+    background-color: #f5f5f5;
+  }
 
   @media (max-width: 720px) {
-    font-size: 0.8rem;
-    min-height: 3em;
+    font-size: 1rem;
+    min-height: 4em;
   }
 `;

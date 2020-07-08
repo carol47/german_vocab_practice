@@ -33,6 +33,8 @@ export default function () {
 }
 
 const BottomPanelContainer = styled.div`
+  position: absolute;
+  top: 80vh;
   display: flex;
   width: 90vw;
   height: auto;
@@ -46,6 +48,7 @@ const BottomPanelContainer = styled.div`
   }
 
   @media (max-width: 480px) {
+    top: 70vh;
     height: 20%;
   }
 `;
