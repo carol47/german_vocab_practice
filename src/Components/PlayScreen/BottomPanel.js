@@ -44,7 +44,7 @@ const BottomPanelContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   * {
-    font-family: "Georgia, serif";
+    font-family: "Roboto Slab", serif;
   }
 
   @media (max-width: 480px) {
@@ -59,7 +59,7 @@ const WordCountBar = ({ questionCount }) => {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 120px;
+    width: 130px;
     height: 32px;
     border: 1px solid black;
     border-radius: 10px;
